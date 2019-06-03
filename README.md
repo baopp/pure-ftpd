@@ -1,7 +1,7 @@
-#pureftpd安装 
-###pureftpd介绍 
+# pureftpd安装 
+### pureftpd介绍 
 PureFTPd [1]  是一款专注于程序健壮和软件安全的免费FTP服务器软件（基于BSD License）。其可以在多种类Unix操作系统中编译运行，包括Linux、OpenBSD、NetBSD、FreeBSD、DragonFly BSD、Solaris、Tru64、Darwin、Irix and HP-UX。PureFTPd还有Android移植版本
-###pureftpd安装  
+### pureftpd安装  
 
 *entOS 6  
 ‘wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-6.repo
