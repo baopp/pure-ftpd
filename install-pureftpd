@@ -65,6 +65,6 @@ CREATE TABLE `users` (
  `DLRatio` smallint(5) NOT NULL default '1',
  PRIMARY KEY  (`User`),
  UNIQUE KEY `User` (`User`)
-) TYPE=MyISAM; 
+) TYPE=INNODB; 
 
 useradd virtualftp -d /data/ftproot/ -s /sbin/nologin -M
