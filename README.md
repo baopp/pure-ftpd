@@ -4,8 +4,8 @@ PureFTPd [1]  是一款专注于程序健壮和软件安全的免费FTP服务器
 ### pureftpd安装  
 
 * entOS 6  
-‘wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-6.repo
-’wget -O /etc/yum.repos.d/epel.repo http://mirrors.aliyun.com/repo/epel-6.repo
+wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-6.repo. 
+wget -O /etc/yum.repos.d/epel.repo http://mirrors.aliyun.com/repo/epel-6.repo
 
 * 编译安装  
 ./configure \
@@ -27,7 +27,7 @@ PureFTPd [1]  是一款专注于程序健壮和软件安全的免费FTP服务器
 –with-throttling
 
 * 插入数据库  
-INSERT INTO mysql.user (Host, User,Password, Select_priv, Insert_priv, Update_priv, Delete_priv, Create_priv,Drop_priv, Reload_priv, Shutdown_priv, Process_priv, File_priv, Grant_priv,References_priv, Index_priv, Alter_priv) VALUES('localhost','ftpuser',PASSWORD('ftppass'),'Y','Y','Y','Y','N','N','N','N','N','N','N','N','N','N');
+' INSERT INTO mysql.user (Host, User,Password, Select_priv, Insert_priv, Update_priv, Delete_priv, Create_priv,Drop_priv, Reload_priv, Shutdown_priv, Process_priv, File_priv, Grant_priv,References_priv, Index_priv, Alter_priv) VALUES('localhost','ftpuser',PASSWORD('ftppass'),'Y','Y','Y','Y','N','N','N','N','N','N','N','N','N','N');
 FLUSH PRIVILEGES;
 
 
@@ -65,7 +65,7 @@ CREATE TABLE `users` (
  `DLRatio` smallint(5) NOT NULL default '1',
  PRIMARY KEY  (`User`),
  UNIQUE KEY `User` (`User`)
-) TYPE=INNODB;
+) TYPE=INNODB; 
 
 * 创建ftp用户  
 useradd virtualftp -d /data/ftproot/ -s /sbin/nologin -M
