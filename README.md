@@ -4,6 +4,7 @@ PureFTPd [1]  是一款专注于程序健壮和软件安全的免费FTP服务器
 ## 文件说明
 |文件|作用|
 |README.md|安装说明|
+|---------|-------|
 |httpd.conf|apache配置实例|
 |pureadmin.tar|管理前端|
 |pureftp.sql|数据库初始化文件|
