@@ -8,7 +8,7 @@ wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-
 wget -O /etc/yum.repos.d/epel.repo http://mirrors.aliyun.com/repo/epel-6.repo
 
 * 编译安装  
-'''
+```
 ./configure \
 –prefix=/usr/local/pureftpd \
 –with-mysql= \
@@ -26,10 +26,10 @@ wget -O /etc/yum.repos.d/epel.repo http://mirrors.aliyun.com/repo/epel-6.repo
 –with-ratios \
 –with-ftpwho \
 –with-throttling
-'''
+```
 
 * 插入数据库  
-'''
+```
 INSERT INTO mysql.user (Host, User,Password, Select_priv, Insert_priv, Update_priv, Delete_priv, Create_priv,Drop_priv, Reload_priv, Shutdown_priv, Process_priv, File_priv, Grant_priv,References_priv, Index_priv, Alter_priv) VALUES('localhost','ftpuser',PASSWORD('ftppass'),'Y','Y','Y','Y','N','N','N','N','N','N','N','N','N','N');
 FLUSH PRIVILEGES;
 
@@ -69,8 +69,8 @@ CREATE TABLE `users` (
  PRIMARY KEY  (`User`),
  UNIQUE KEY `User` (`User`)
 ) TYPE=INNODB; 
-'''
+```
 * 创建ftp用户  
-'''
+```
 useradd virtualftp -d /data/ftproot/ -s /sbin/nologin -M
-'''
+```
