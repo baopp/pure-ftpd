@@ -100,6 +100,7 @@ cd pureadmin
 vim config.php
 ```
 修改config.php,将dbhost、dbname、dbuser、dbpasswd	修改为mysql信息
+
 5. 权限设置
 - 创建ftp读写用户  
 ```bash
