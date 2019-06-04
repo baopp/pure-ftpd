@@ -3,12 +3,12 @@
 PureFTPd [1]  是一款专注于程序健壮和软件安全的免费FTP服务器软件（基于BSD License）。其可以在多种类Unix操作系统中编译运行，包括Linux、OpenBSD、NetBSD、FreeBSD、DragonFly BSD、Solaris、Tru64、Darwin、Irix and HP-UX。PureFTPd还有Android移植版本
 ## 文件说明
 |文件|作用|
-| README.md         |  安装说明           | 
-|---------          |-------             |
-|httpd.conf         |apache配置实例       |
-|pureadmin.tar      |管理前端             |
-|pureftp.sql        |数据库初始化文件      |
-|pureftpd-mysql.conf|pureftpd连接mysql文件|
+| README.md           |  安装说明             | 
+|---------            |-------               |
+|    httpd.conf       | apache配置实例        |
+|    pureadmin.tar    | 管理前端              |
+|    pureftp.sql      | 数据库初始化文件       |
+| pureftpd-mysql.conf | pureftpd连接mysql文件 |
 ## pureftpd安装  
 + 安装yum源 （可以使用国内其他源） 
 1. centos 6
