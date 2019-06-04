@@ -2,27 +2,28 @@
 ## pureftpd介绍 
 PureFTPd [1]  是一款专注于程序健壮和软件安全的免费FTP服务器软件（基于BSD License）。其可以在多种类Unix操作系统中编译运行，包括Linux、OpenBSD、NetBSD、FreeBSD、DragonFly BSD、Solaris、Tru64、Darwin、Irix and HP-UX。PureFTPd还有Android移植版本
 ## 文件说明
-|。     文件           |     作用             |
+|    文件              |     作用             |
+|:-:|:-:|:-:|
 | README.md           |  安装说明             | 
 |    httpd.conf       | apache配置实例        |
 |    pureadmin.tar    | 管理前端              |
 |    pureftp.sql      | 数据库初始化文件       |
 | pureftpd-mysql.conf | pureftpd连接mysql文件 |
 ## pureftpd安装  
-+ 安装yum源 （可以使用国内其他源） 
-1. centos 6
-```
+1. 安装yum源 （可以使用国内其他源） 
+- centos 6
+```bash
 wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-6.repo 
 wget -O /etc/yum.repos.d/epel.repo http://mirrors.aliyun.com/repo/epel-6.repo
 ```
-2. centos7
-```
+- centos7
+```bash
 wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo
 wget -O /etc/yum.repos.d/epel.repo http://mirrors.aliyun.com/repo/epel-7.repo
 ```
-+ 安装pureftpd
-1. 编译安装  
-```
+2. 安装pureftpd
+- 编译安装  
+```bash
 ./configure \
 –prefix=/usr/local/pureftpd \
 –with-mysql= \
@@ -41,12 +42,12 @@ wget -O /etc/yum.repos.d/epel.repo http://mirrors.aliyun.com/repo/epel-7.repo
 –with-ftpwho \
 –with-throttling
 ```
-2. yum安装
-```
+- yum安装
+```bash
 yum install pure-ftpd -y
 ```
-+ 安装并插入数据库  
-```
+3. 安装并插入数据库  
+```bash
 yum install mysql -y
 cat << pureftpd.sql >> EOF
 INSERT INTO mysql.user (Host, User,Password, Select_priv, Insert_priv, Update_priv, Delete_priv, Create_priv,Drop_priv, Reload_priv, Shutdown_priv, Process_priv, File_priv, Grant_priv,References_priv, Index_priv, Alter_priv) VALUES('localhost','ftpuser',PASSWORD('ftppass'),'Y','Y','Y','Y','N','N','N','N','N','N','N','N','N','N');
@@ -92,24 +93,24 @@ EOF
 mysql -u root -p < pureadmin.sql
 ```
 
-+ 复制前端管理页面php
-```
+4. 复制前端管理页面php
+```bash
 tar xvf pureadmin.tar
 cd pureadmin
 vim config.php
 ```
 修改config.php,将dbhost、dbname、dbuser、dbpasswd	修改为mysql信息
-+ 权限设置
-1. 创建ftp读写用户  
-```
+5. 权限设置
+- 创建ftp读写用户  
+```bash
 useradd virtualftp1 -d /data/ftproot/ -s /sbin/nologin -M
 ```
-2. 创建ftp只读用户
-```
+- 创建ftp只读用户
+```bash
 useradd virtualftp2 -d /data/ftproot/ -s /sbin/nologin -M
 ```
-3. 设置file acl(只对目录读写权限，这个用户对目录下只有读权限)
-```
+- 设置file acl(只对目录读写权限，这个用户对目录下只有读权限)
+```bash
 setfacl -m u:virtualftp2:rw- FTPname-path
 setfacl -m g:virtualftp2:rw- ftpname-path
 ```
