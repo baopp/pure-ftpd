@@ -4,18 +4,18 @@ PureFTPd [1]  是一款专注于程序健壮和软件安全的免费FTP服务器
 ### pureftpd安装  
 
 * 安装yum源 （可以使用国内其他源） 
-**centos 6
+1. centos 6
 ```
 wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-6.repo 
 wget -O /etc/yum.repos.d/epel.repo http://mirrors.aliyun.com/repo/epel-6.repo
 ```
-**centos7
+2. centos7
 ```
 wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo
 wget -O /etc/yum.repos.d/epel.repo http://mirrors.aliyun.com/repo/epel-7.repo
 ```
 * 安装pureftpd
-**编译安装  
+1. 编译安装  
 ```
 ./configure \
 –prefix=/usr/local/pureftpd \
@@ -35,7 +35,7 @@ wget -O /etc/yum.repos.d/epel.repo http://mirrors.aliyun.com/repo/epel-7.repo
 –with-ftpwho \
 –with-throttling
 ```
-**yum安装
+2. yum安装
 ```
 yum install pureftpd -y
 ```
