@@ -4,18 +4,18 @@ PureFTPd [1]  是一款专注于程序健壮和软件安全的免费FTP服务器
 ### pureftpd安装  
 
 * 安装yum源 （可以使用国内其他源） 
-1. centos 6
+1.centos 6
 ```
 wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-6.repo 
 wget -O /etc/yum.repos.d/epel.repo http://mirrors.aliyun.com/repo/epel-6.repo
 ```
-2. centos7
+2.centos7
 ```
 wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo
 wget -O /etc/yum.repos.d/epel.repo http://mirrors.aliyun.com/repo/epel-7.repo
 ```
 * 安装pureftpd
-1. 编译安装  
+1.编译安装  
 ```
 ./configure \
 –prefix=/usr/local/pureftpd \
@@ -35,7 +35,7 @@ wget -O /etc/yum.repos.d/epel.repo http://mirrors.aliyun.com/repo/epel-7.repo
 –with-ftpwho \
 –with-throttling
 ```
-2. yum安装
+2.yum安装
 ```
 yum install pureftpd -y
 ```
@@ -81,12 +81,24 @@ CREATE TABLE `users` (
  UNIQUE KEY `User` (`User`)
 ) TYPE=INNODB; 
 ```
-* 创建ftp用户  
-```
-useradd virtualftp -d /data/ftproot/ -s /sbin/nologin -M
-```
+
 * 复制前端php
 ```
 tar xvf pureadmin.tar
+cd pureadmin
+vim config.php
 ```
 修改config.php,将dbhost、dbname、dbuser、dbpasswd	修改为mysql信息
+* 权限设置
+ 1.创建ftp读写用户  
+```
+useradd virtualftp1 -d /data/ftproot/ -s /sbin/nologin -M
+```
+2.创建ftp只读用户
+```
+useradd virtualftp2 -d /data/ftproot/ -s /sbin/nologin -M
+```
+3.设置file acl(只对目录读写权限，这个用户对目录下只有读权限)
+```
+setfacl -m u:virtualftp2:rw- FTPname-path
+```
